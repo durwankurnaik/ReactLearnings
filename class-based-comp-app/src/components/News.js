@@ -33,14 +33,18 @@ export class News extends Component {
   }
 
   async updateNews() {
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&sortBy=popularity&apiKey=1ce45add0b8743919ba3f86a5b9db555&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
+    this.props.setProgress(30);
     let parsedData = await data.json();
+    this.props.setProgress(70);
 
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults
-    })
+    });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -49,7 +53,7 @@ export class News extends Component {
 
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
-    const url = `https://gnews.io/api/v4/top-headlines?token=1f1585a2f072790768145142e2a82f99&lang=en&country=in`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&sortBy=popularity&apiKey=1ce45add0b8743919ba3f86a5b9db555&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
 
@@ -72,8 +76,8 @@ export class News extends Component {
           <div className='container'>
             <div className='row'>
               {this.state.articles.map((element) => {
-                return <div className='col-md-3 mb-5' key={element.url}>
-                  <NewsItems title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage ? element.urlToImage : 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'} newsUrl={element.url} author={element.author} date={element.publishedAt} />
+                return <div className='col-md-4 mb-5' key={element.url}>
+                  <NewsItems title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage ? element.urlToImage : 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                 </div>
               })}
             </div>

@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 
 export class NewsItems extends Component {
   render() {
-    let { title, description, imageUrl, newsUrl, author, date } = this.props;
+    let { title, description, imageUrl, newsUrl, author, date, source } = this.props;
     return (
       <div className="container">
         <div className="card bg-dark">
+          <div>
+            <span class="position-absolute badge rounded-pill bg-dark" style={{right: '0'}}>
+              <span>{source}</span>
+            </span>
+
+          </div>
           <img src={imageUrl} className="card-img-top" alt="..." />
           <div className="card-body bg-dark text-light">
             <h5 className="card-title">{title.slice(0, 45) === title ? title : `${title.slice(0, 45)}...`}</h5>
