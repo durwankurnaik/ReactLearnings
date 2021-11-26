@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 
 export class Navbar extends Component {
   render() {
-    document.body.style.background = '#f23a56';
-    document.body.style.color = 'white';
     return (
       <nav className={`navbar navbar-expand-lg navbar-dark bg-dark`}>
         <div className="container-fluid">

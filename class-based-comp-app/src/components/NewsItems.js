@@ -7,7 +7,7 @@ export class NewsItems extends Component {
       <div className="container">
         <div className="card bg-dark">
           <div>
-            <span class="position-absolute badge rounded-pill bg-dark" style={{right: '0'}}>
+            <span className="position-absolute badge rounded-pill bg-danger" style={{right: '0'}}>
               <span>{source}</span>
             </span>
 
