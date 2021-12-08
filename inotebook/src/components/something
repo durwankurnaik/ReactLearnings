@@ -1,0 +1,254 @@
+form: {
+    "id": "HWsItlEN",
+    "type": "quiz",
+    "title": "Round II_III",
+    "workspace": {
+        "href": "https:\u002F\u002Fapi.typeform.com\u002Fworkspaces\u002FtHQSt9"
+    },
+    "theme": {
+        "id": "ZFDEUn",
+        "font": "Arvo",
+        "name": "Spaceboy",
+        "has_transparent_button": false,
+        "colors": {
+            "question": "#FFFFFF",
+            "answer": "#407FD4",
+            "button": "#4DC950",
+            "background": "#1e1e45"
+        },
+        "visibility": "public",
+        "background": {
+            "brightness": 0,
+            "layout": "fullscreen",
+            "href": "https:\u002F\u002Fimages.typeform.com\u002Fimages\u002FYKBFYARaqsKS"
+        },
+        "screens": {
+            "font_size": "x-small",
+            "alignment": "center"
+        },
+        "fields": {
+            "font_size": "medium",
+            "alignment": "left"
+        }
+    },
+    "settings": {
+        "language": "en",
+        "progress_bar": "proportion",
+        "meta": {
+            "allow_indexing": false
+        },
+        "hide_navigation": false,
+        "is_public": true,
+        "is_trial": false,
+        "show_progress_bar": true,
+        "show_typeform_branding": true,
+        "are_uploads_public": false,
+        "show_time_to_complete": false,
+        "pro_subdomain_enabled": false,
+        "capabilities": {
+            "e2e_encryption": {
+                "enabled": false,
+                "modifiable": false
+            }
+        }
+    },
+    "thankyou_screens": [
+        {
+            "id": "fEAYsjrAmLm7",
+            "ref": "01FJS8MEQY46BKW75PAEMSGPE8",
+            "title": "Congratulations! You have finished the quiz! \n",
+            "properties": {
+                "show_button": true,
+                "share_icons": false,
+                "button_mode": "reload",
+                "button_text": "reload"
+            },
+            "attachment": {
+                "type": "image",
+                "href": "https:\u002F\u002Fimages.typeform.com\u002Fimages\u002FcEFY79cyDwtX",
+                "properties": {}
+            }
+        },
+        {
+            "id": "2Os0qD3GHJB5",
+            "ref": "ce584717-9bbb-45b1-9343-87eba61e4c4b",
+            "title": "Oops that's wrong",
+            "properties": {
+                "show_button": true,
+                "share_icons": false,
+                "button_mode": "reload",
+                "button_text": "again"
+            },
+            "attachment": {
+                "type": "image",
+                "href": "https:\u002F\u002Fimages.typeform.com\u002Fimages\u002F2PjKtTpkfgYu",
+                "properties": {}
+            }
+        },
+        {
+            "id": "DefaultTyScreen",
+            "ref": "default_tys",
+            "title": "Thanks for completing this typeform\nNow *create your own* — it's free, easy, & beautiful",
+            "properties": {
+                "show_button": true,
+                "share_icons": false,
+                "button_mode": "default_redirect",
+                "button_text": "Create a *typeform*"
+            },
+            "attachment": {
+                "type": "image",
+                "href": "https:\u002F\u002Fimages.typeform.com\u002Fimages\u002F2dpnUBBkz2VN"
+            }
+        }
+    ],
+    "welcome_screens": [
+        {
+            "id": "W4Yh41YncBJp",
+            "ref": "98031903-8a95-4e33-b3af-2f2e5807f034",
+            "title": "Near",
+            "properties": {
+                "show_button": true,
+                "button_text": "Start",
+                "description": "Round II, Step III"
+            }
+        }
+    ],
+    "fields": [
+        {
+            "id": "h1Biz5uUS4Di",
+            "title": "Please enter your Telegram account name",
+            "ref": "7d8b20a7-fedd-46f2-ab09-a61f3e7f0ce2",
+            "properties": {},
+            "validations": {
+                "required": true
+            },
+            "type": "short_text"
+        },
+        {
+            "id": "Zfw7UOtZT5f9",
+            "title": "@\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*            ",
+            "ref": "e8f9b5c6-c011-4247-8d50-2ff1f8aaff1a",
+            "properties": {
+                "description": "[twitter.com\u002FNEARProtocol\u002Fstatus\u002F](https:\u002F\u002Ftwitter.com\u002FNEARProtocol\u002Fstatus\u002F\\)\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*"
+            },
+            "validations": {
+                "required": false
+            },
+            "type": "short_text",
+            "attachment": {
+                "type": "image",
+                "href": "https:\u002F\u002Fimages.typeform.com\u002Fimages\u002FDPnJrLk6k7Zh",
+                "properties": {}
+            },
+            "layout": {
+                "type": "wallpaper",
+                "attachment": {
+                    "type": "image",
+                    "href": "https:\u002F\u002Fimages.typeform.com\u002Fimages\u002FDPnJrLk6k7Zh",
+                    "properties": {
+                        "focal_point": {
+                            "x": 0.02629416598192269,
+                            "y": -0.644020659515296
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "logic": [
+        {
+            "type": "field",
+            "ref": "e8f9b5c6-c011-4247-8d50-2ff1f8aaff1a",
+            "actions": [
+                {
+                    "action": "jump",
+                    "details": {
+                        "to": {
+                            "type": "thankyou",
+                            "value": "01FJS8MEQY46BKW75PAEMSGPE8"
+                        }
+                    },
+                    "condition": {
+                        "op": "or",
+                        "vars": [
+                            {
+                                "op": "equal",
+                                "vars": [
+                                    {
+                                        "type": "field",
+                                        "value": "e8f9b5c6-c011-4247-8d50-2ff1f8aaff1a"
+                                    },
+                                    {
+                                        "type": "constant",
+                                        "value": "ilblackdragon"
+                                    }
+                                ]
+                            },
+                            {
+                                "op": "equal",
+                                "vars": [
+                                    {
+                                        "type": "field",
+                                        "value": "e8f9b5c6-c011-4247-8d50-2ff1f8aaff1a"
+                                    },
+                                    {
+                                        "type": "constant",
+                                        "value": "@ilblackdragon"
+                                    }
+                                ]
+                            },
+                            {
+                                "op": "equal",
+                                "vars": [
+                                    {
+                                        "type": "field",
+                                        "value": "e8f9b5c6-c011-4247-8d50-2ff1f8aaff1a"
+                                    },
+                                    {
+                                        "type": "constant",
+                                        "value": "Ilblackdragon"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "action": "jump",
+                    "details": {
+                        "to": {
+                            "type": "thankyou",
+                            "value": "ce584717-9bbb-45b1-9343-87eba61e4c4b"
+                        }
+                    },
+                    "condition": {
+                        "op": "always",
+                        "vars": []
+                    }
+                }
+            ]
+        },
+        {
+            "type": "field",
+            "ref": "7d8b20a7-fedd-46f2-ab09-a61f3e7f0ce2",
+            "actions": [
+                {
+                    "action": "jump",
+                    "details": {
+                        "to": {
+                            "type": "field",
+                            "value": "e8f9b5c6-c011-4247-8d50-2ff1f8aaff1a"
+                        }
+                    },
+                    "condition": {
+                        "op": "always",
+                        "vars": []
+                    }
+                }
+            ]
+        }
+    ],
+    "_links": {
+        "display": "https:\u002F\u002Fform.typeform.com\u002Fto\u002FHWsItlEN"
+    }
+},

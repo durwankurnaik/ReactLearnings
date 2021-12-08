@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import NoteStates from './context/notes/NoteStates';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/about" element={<About />} />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </NoteStates>
   );
