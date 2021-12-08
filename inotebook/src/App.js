@@ -5,12 +5,14 @@ import Home from './components/Home';
 import About from './components/About';
 import NoteStates from './context/notes/NoteStates';
 import Footer from './components/Footer';
+import Alert from './components/Alert';
 
 function App() {
   return (
     <NoteStates>
       <Router>
         <Navbar />
+        <Alert message="This is amazing React course" />
         <div className="container">
           <Routes>
             <Route exact path="/" element={<Home />} />

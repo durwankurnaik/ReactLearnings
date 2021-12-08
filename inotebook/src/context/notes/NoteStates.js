@@ -3,82 +3,78 @@ import NoteContext from './NoteContext'
 
 
 const NoteStates = (props) => {
+  const host = "http://localhost:5000";
 
-    const notesInitial = [
-        {
-            "_id": "61ab7fd46e64c46f3d62617b",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Internship updated shitt",
-            "description": "Find some nice internship for helping yourself in job interview. Also find some internship with some nice stipend",
-            "tag": "TODO",
-            "date": "2021-12-04T14:48:52.178Z",
-            "__v": 0
-        },
-        {
-            "_id": "61ae14653108a3515de61cac",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Find a Job",
-            "description": "Find a good job otherwise you will be fucked up by watching others",
-            "tag": "TODO",
-            "date": "2021-12-06T13:47:17.216Z",
-            "__v": 0
-        },
-        {
-            "_id": "61ae146534308a3515de61cac",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Some weird shit to be done over here",
-            "description": "Are padhai karlo thoda",
-            "tag": "TODO",
-            "date": "2021-12-06T13:47:17.216Z",
-            "__v": 0
-        },
-        {
-            "_id": "61ae146554108a3515de61cac",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Find a Job",
-            "description": "Find a good job otherwise you will be fucked up by watching others",
-            "tag": "TODO",
-            "date": "2021-12-06T13:47:17.216Z",
-            "__v": 0
-        },
-        {
-            "_id": "61ae146531083515de61cac",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Some weird shit to be done over here",
-            "description": "Are padhai karlo thoda",
-            "tag": "TODO",
-            "date": "2021-12-06T13:47:17.216Z",
-            "__v": 0
-        },
-        {
-            "_id": "61ae1465310561a3515de61cac",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Find a Job",
-            "description": "Find a good job otherwise you will be fucked up by watching others",
-            "tag": "TODO",
-            "date": "2021-12-06T13:47:17.216Z",
-            "__v": 0
-        },
-        {
-            "_id": "61ae14653103515de61cac",
-            "user": "61a237b106ab201dc209422a",
-            "title": "Some weird shit to be done over here",
-            "description": "Are padhai karlo thoda",
-            "tag": "TODO",
-            "date": "2021-12-06T13:47:17.216Z",
-            "__v": 0
-        }
-    ]
+  const getNotes = async () => {
 
-    const [notes, setNotes] = useState(notesInitial)
+    const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFhMjM3YjEwNmFiMjAxZGMyMDk0MjJhIn0sImlhdCI6MTYzODAzMTQ5Nn0.Fx0_zPKuMrAEa3cDK-cX6yFIpSk0pP8c8iUeJxe1XGo"
+      }
+    })
 
-    return (
-        <div>
-            <NoteContext.Provider value={{ notes, setNotes }}>
-                {props.children}
-            </NoteContext.Provider>
-        </div>
-    )
+    const json = await response.json();
+    console.log(json);
+  }
+
+  const [notes, setNotes] = useState({});
+
+  // Add a note
+  const addNote = async (note) => {
+    const url = `${host}/api/notes/addnotes`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFhMjM3YjEwNmFiMjAxZGMyMDk0MjJhIn0sImlhdCI6MTYzODAzMTQ5Nn0.Fx0_zPKuMrAEa3cDK-cX6yFIpSk0pP8c8iUeJxe1XGo"
+      },
+      body: JSON.stringify({ note })
+    });
+    setNotes(notes.concat(note));
+  }
+
+  // Edit a note
+  const editNote = async (id, title, tag, description) => {
+
+    // Server side logic
+    const url = `${host}/api/notes/updatenote/${id}`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFhMjM3YjEwNmFiMjAxZGMyMDk0MjJhIn0sImlhdCI6MTYzODAzMTQ5Nn0.Fx0_zPKuMrAEa3cDK-cX6yFIpSk0pP8c8iUeJxe1XGo"
+      },
+      body: JSON.stringify({ title, tag, description })
+    });
+
+    const json = response.json();
+
+    // This is used in client side
+    for (let index = 0; index < notes.length; index++) {
+      const element = notes[index];
+      if (element._id === id) {
+        element.title = title;
+        element.tag = tag;
+        element.description = description;
+      }
+    }
+  }
+
+  // Delete a note
+  const deleteNote = (id) => {
+    const newNotes = notes.filter((note) => { return note._id !== id }); // Deleting the note that is clicked by the user.
+    setNotes(newNotes) // Setting the remaining notes as the final notes to be outputted.
+  }
+
+  return (
+    <div>
+      <NoteContext.Provider value={{ notes, getNo, addNote, editNote, deleteNote }}>
+        {props.children}
+      </NoteContext.Provider>
+    </div>
+  )
 }
 
 export default NoteStates
