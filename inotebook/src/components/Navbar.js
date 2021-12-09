@@ -1,33 +1,35 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from "react-router-dom";
+
+  
 
 const Navbar = () => {
+    let location = useLocation();
+    return (
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/">iNotebook</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link className={`nav-link ${location.pathname==="/"? "active": ""}`} aria-current="page" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={`nav-link ${location.pathname==="/about"? "active": ""}`} to="/about">About</Link>
+                        </li>
 
-  // For changing the navbar items text color to highlight the current active page
-  let location = useLocation();
-
-  return (
-    <>
-      <header className="p-3 bg-dark text-white">
-        <div>
-          <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            </Link>
-
-            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><Link to="/" className={`nav-link px-2 text-${location.pathname === "/" ? "white":"secondary"}`}>Home</Link></li>
-              <li><Link to="/about" className={`nav-link px-2 text-${location.pathname === "/about" ? "white":"secondary"}`}>About</Link></li>
-            </ul>
-
-            <div className="text-end">
-              <Link to="/login"><button type="button" className="btn btn-outline-light me-2">Login</button></Link>
-              <Link to="/signup"><button type="button" className="btn btn-warning">Sign-up</button></Link>
+                    </ul>
+                    <form className="d-flex"> 
+                    <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
+                    <Link className="btn btn-primary mx-1" to="/signup" role="button">Signup</Link>
+                    </form>
+                </div>
             </div>
-          </div>
-        </div>
-      </header>
-    </>
-  )
+        </nav>
+    )
 }
 
 export default Navbar
