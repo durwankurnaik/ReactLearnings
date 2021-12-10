@@ -18,23 +18,23 @@ const AddNote = () => {
   }
     
   return (
-    <div className="container my-3">
+    <div className="container my-2">
       <h2>Add a Note</h2>
       <form className="my-3">
         <div className="mb-3">
           <label htmlFor="title" className="form-label">Title</label>
-          <input type="text" className="form-control" id="title" name="title" value={note.title} onChange={onChange} minLength={5} required />
+          <input type="text" className="form-control" id="title" name="title" value={note.title} onChange={onChange} minLength={2} required />
         </div>
         <div className="mb-3">
           <label htmlFor="tag" className="form-label">Tag</label>
-          <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={5} required />
+          <input type="text" className="form-control" id="tag" name="tag" value={note.tag} onChange={onChange} minLength={2} required />
         </div>
         <div className="mb-3">
           <label htmlFor="description" className="form-label">Description</label>
-          <textarea type="text" className="form-control" id="description" rows={5} name="description" value={note.description} onChange={onChange} minLength={5} required />
+          <textarea type="text" className="form-control" id="description" rows={5} name="description" value={note.description} onChange={onChange} minLength={3} required />
         </div>
 
-        <button disabled={note.title.length < 5 || note.description.length < 5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
+        <button disabled={note.title.length < 3 || note.description.length < 4} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
       </form>
     </div>
   )
