@@ -1,24 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import ProductList from "./components/ProductList";
+import React, { useState } from "react";
 
 function App() {
+  const [productsList, setProductsList] = useState([
+    {
+      price: 999,
+      name: "I phone 10s max",
+      quantity: 0,
+    },
+    {
+      price: 1999,
+      name: "Macbook Pro 2021",
+      quantity: 0,
+    },
+    {
+      price: 499,
+      name: "Ipad max",
+      quantity: 0,
+    },
+    {
+      price: 399,
+      name: "Ipad mini",
+      quantity: 0,
+    },
+  ]);
+
+  const incrementQuantity = (index) => {
+    let newProductList = [...productsList];
+    newProductList[index].quantity++;
+    setProductsList(newProductList);
+  };
+
+  const decrementQuantity = (index) => {
+    let newProductList = [...productsList];
+    if (newProductList[index].quantity !== 0) {
+      newProductList[index].quantity--;
+      setProductsList(newProductList);
+    }
+  };
+
+  const grandTotal = () => {
+    let sum = 0;
+    sum = productsList.reduce((product) => {
+      return sum + product.quantity
+    })
+  }
+
+  console.log(grandTotal())
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <ProductList
+        productList={productsList}
+        incrementQuantity={incrementQuantity}
+        decrementQuantity={decrementQuantity}
+      />
+      <Footer />
+    </>
   );
 }
 
