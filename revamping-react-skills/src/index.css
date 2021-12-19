@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .cart-item {
-  @apply bg-gray-100 h-56 rounded-xl shadow-md grid content-center
+  @apply bg-gray-100 h-56 rounded-xl shadow-md grid content-center;
 }

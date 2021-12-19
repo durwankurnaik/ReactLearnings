@@ -19,10 +19,13 @@ function ProductList(props) {
         })}
       </div>
 
-      <div className="w-3/4 mx-auto mt-10 flex justify-between">
-        <div className="text-xl">Grand Total</div>
+      <div className="w-3/4 mx-auto my-10 flex justify-between">
+        <div className="text-xl">Amount Payable: {props.totalAmount}</div>
         <div className="space-x-2">
-          <button className="border border-red-500 hover:bg-red-500 py-1 px-3 rounded-md">
+          <button
+            className="border border-red-500 hover:bg-red-500 py-1 px-3 rounded-md"
+            onClick={props.clearCart}
+          >
             Clear cart
           </button>
           <button className="border-2 border-green-500 hover:bg-green-500 py-1 px-3 rounded-md">

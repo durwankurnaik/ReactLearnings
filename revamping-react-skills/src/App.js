@@ -1,5 +1,4 @@
 import "./App.css";
-import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
 import React, { useState } from "react";
@@ -27,29 +26,39 @@ function App() {
       quantity: 0,
     },
   ]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const incrementQuantity = (index) => {
     let newProductList = [...productsList];
+    let newTotalAmount = totalAmount;
+
     newProductList[index].quantity++;
+    newTotalAmount += newProductList[index].price;
+
     setProductsList(newProductList);
+    setTotalAmount(newTotalAmount);
   };
 
   const decrementQuantity = (index) => {
     let newProductList = [...productsList];
-    if (newProductList[index].quantity !== 0) {
-      newProductList[index].quantity--;
-      setProductsList(newProductList);
-    }
+    let newTotalAmount = totalAmount;
+
+    newProductList[index].quantity > 0 && newProductList[index].quantity--;
+    newTotalAmount -= newProductList[index].price;
+
+    setProductsList(newProductList);
+    setTotalAmount(newTotalAmount);
   };
 
-  const grandTotal = () => {
-    let sum = 0;
-    sum = productsList.reduce((product) => {
-      return sum + product.quantity
-    })
-  }
+  const clearCart = () => {
+    let newProductList = [...productsList];
 
-  console.log(grandTotal())
+    newProductList.map((product) => {
+      return (product.quantity = 0);
+    });
+    setProductsList(newProductList);
+    setTotalAmount(0);
+  };
 
   return (
     <>
@@ -58,8 +67,9 @@ function App() {
         productList={productsList}
         incrementQuantity={incrementQuantity}
         decrementQuantity={decrementQuantity}
+        totalAmount={totalAmount}
+        clearCart={clearCart}
       />
-      <Footer />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 
 function Product(props) {
-  const { incrementQuantity, index } = props;
   return (
     <>
       <div className="cart-item">
