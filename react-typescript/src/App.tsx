@@ -1,10 +1,11 @@
 import "./App.css";
-import { Greet } from "./components/Greet";
-import { Person } from "./components/Person";
 import React, { useState } from "react";
-import { Status } from "./components/Status";
-import { Heading } from "./components/Heading";
-import { Oscar } from "./components/Oscar";
+import { Button } from "./components/Button";
+// import { Greet } from "./components/Greet";
+// import { Person } from "./components/Person";
+// import { Status } from "./components/Status";
+// import { Heading } from "./components/Heading";
+// import { Oscar } from "./components/Oscar";
 
 function App() {
   const [age, setAge] = useState(20);
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      This is a typescript-react project
+      {/* This is a typescript-react project
       <Greet name="Durwankur" isLoggedIn={false} />
       <hr />
       <Person name={name} age={age} />
@@ -32,8 +33,11 @@ function App() {
       <Status status="fetched" />
         <Oscar>
           <Heading>Oscar goes to Dicaprio</Heading>
-        </Oscar>
-          
+        </Oscar> */}
+
+        <Button handleClick={() => {
+          console.log("Button Clicked")
+        }} />
     </>
   );
 }
