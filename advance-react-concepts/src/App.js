@@ -1,5 +1,9 @@
 import React from "react";
-import ReducerCounter from "./components/ReducerCounter";
+import DocTitle from "./DocTitle";
+// import UsingRefs from "./components/UsingRefs";
+// import Counter3 from "./Counter3";
+// import Counter2 from "./components/Counter2";
+// import ReducerCounter from "./components/ReducerCounter";
 // import CompA from "./components/CompA";
 // import HookTimer from "./components/HookTimer";
 
@@ -13,7 +17,14 @@ function App() {
         <CompA />
       </UserContext.Provider> */}
 
-      <ReducerCounter />
+      {/* <ReducerCounter /> */}
+      {/* <Counter2 /> */}
+
+      {/* <Counter3 /> */}
+
+      {/* <UsingRefs /> */}
+
+      <DocTitle />
     </div>
   );
 }
