@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const amount = useSelector(state => state.amount)
+  
   return (
     <div className="flex justify-between py-4 px-6 text-xl bg-gray-300">
       <div className="flex">
@@ -23,7 +26,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <div>Right side things</div>
+      <div>Your balance: {amount}</div>
     </div>
   );
 }
